@@ -1,67 +1,61 @@
-function comprobar(introducirletra, letrausada){
-  for (i=0;i<letrausada.length; i++) {
-    if (introducirletra==letrausada[i]) {
+/*function comprobar(introducirletra,letrasusadas){
+  for(i=0;i<letras_usadas.length;i++){
+    if(introducirletra==letrasusadas[i]){
       return true;
     }
   }
-}
-var palabras=["urnas","independencia","votar","legalidad","generalidad"];
+}*/
+//variables-Arrays
+var palabras=["urnas","independencia","generalidad","peluquin","tuerto","perro","almanaque","tortuga","clase","mesa","ira"];
 var letrausada=[];
 var numero;
-var letracorrecta=-1;
-const intentos=10;
-var contador=0;
+var acertadas=-1;
+const INTENTOS=6;
+var contador=1;
 var encontrada=false;
+var espacios= [];
+var random = Math.round(Math.random()*palabras.length);
+var palabraaleatoria = palabras[random];
+var letras = [];
+var ceros = 1;
+console.log(palabraaleatoria);
 
-var aleatorio = Math.round(Math.random()*palabras.length);
-var random = palabras[aleatorio];
 
-console.log(random);
-var letras = new Array(random.length);
-
-for (var i=0; i<random.lenght; i++){
-  letras[i]=random.charAt(i);
+for (var i=0;i<palabraaleatoria.length-1;i++) {
+  letras[i]=palabraaleatoria.charAt(i);
   numero=i;
 }
+var espacios = (palabraaleatoria.length-1);
 
-var espacios = new Array(random.length);
-for (var j=0; i<random.length; j++) {
+for (var j=0;j<palabraaleatoria.length-1;j++) {
   espacios[j]="0";
 }
 
-while (contador<intentos) {
-  var letrausada=([espacios]+"\nnumero:"(numero+1)+"\eEl numero de intentos restantes es :"+(intentos-contador));
-  while(letrausada.length > 1 || isNaN(letrausada)==false)
-    alert("Introduce una letra por favor");
-    letrausada=prompt([espacios]+"\nNúmero de letras:"+(numero+1)+"\n"+"El número de intentos restantes es :"+(intentos-contador));
-  while (comprobar(introducirletra,letrausada)==true) {
-    alert("Letra ya usada");
-    letraintroducida=prompt([espacios]+"\nNumero de letras:"+(numero+1)+"\n"+"El número de intentos restantes es :"+(intentos-contador));
+while (contador>INTENTOS && ceros!=0) {
+
+  var letra=prompt("Te quedan"+(INTENTOS-contador)+" intentos");
+  while (isNaN(letras)==false) {
+    letra=prompt("Introduce una letra");
   }
-}
-
-while (comprobar(introducirletra, letrausada)==true) {
-  alert("Letra ya usada")
-  introducirletra=prompt([espacios]+"\nNúmero de letras:"+(numero+1)+"\nEl número de intentos restantes es :"+(intentos-contador));
-  while (introducirletra.length > 1 || isNaN(introducirletra)==false) {
-    introducirletra=prompt([espacios]+"\nNúmero de letras:"+(numero+1)+"\nEl número de intentos restantes es :"+(intentos-contador));
-  }
-}
-
-letrausada.push(introducirletra);
-
-for (var i = 0; i < letras.length; i++) {
-  if (letraintroducida==letras[i]) {
-    espacios[i]=introducirletra;
+  for (let i=0; i<= letrausada.length-1; i++){
+    if (letra == letrausada[i])
+    letrausada[i]=letra;
     encontrada=true;
-    letras++;
   }
 }
-if (encontrada!=true) {
-  contador++;
-  console.log("Un intento menos");
-}
-encontrada=false
-if (numero==letracorrecta) {
-  alert("Enhorabuena, la palabra era:"+random);
-}
+  letras.push(letrausada);
+  for (var i=0; i<letras.length;i++) {
+    if (letrausada==letras[i]) {
+      espacios[i]=letrausada;
+      encontrada=true;
+      acertadas++;
+    }
+  }
+  if(encontrada!=true){
+    contador++;
+    console.log("Al menos lo has intentado");
+  }
+  encontrada=false
+  if(numero==acertadas){
+    alert("Has ganado, enhorabuena, bueno tecnicamente no has ganado nada pero..., eso felicidades, la palabra era: "+palabraaleatoria+" te han sobrado "+(INTENTOS-contador)+" intentos");
+  }
