@@ -1,0 +1,23 @@
+legend{
+  font-weight: bold;
+}
+p{
+  font-weight: bold;
+}
+body{
+  text-align: center;
+  font-style: Arial,Helvetica,sans-serif;
+  background-color: rgb(40, 190, 190);
+}
+h1,h2{
+  font-style: Georgia,serif;
+}
+fieldset{
+  text-align: left;
+}
+select:focus, input:focus{
+  background-color: lightblue;
+}
+input:hover, select:hover{
+  background-color:white;
+}
