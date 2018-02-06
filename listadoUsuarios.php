@@ -6,17 +6,15 @@
     <link rel="stylesheet" href="insertar.css">
   </head>
   <body>
-    <h1>SALUDOS</h1>
+    <h1>SALUDOS GRUMETILLO</h1>
     <br><br>
-    <div class="">
-      <fielset class="seleccionar">
+      <fielset class="caja">
         <legend>Selecciona tu usuario.</legend>
-        <form class="user" action="ahorcado.php" method="post">
           <select class="" name="">
             <?php
             $juegos=new mysqli("localhost","root","","juegos");
             if ($juegos->connect_errno) {
-              echo "Fallo al conectar a MySQL: " . $juegos->connect_error;
+              echo "Fallo al conectar a MySQL:" . $juegos->connect_error;
             } else {
               ?>
               <option value="">Usuarios</option>
@@ -38,6 +36,5 @@
         <legend>Crear usuarios.</legend>
         <button type="button" name="button" onclick="location.href='insertarUsuario.php'">Crear nuevo usuario</button>
       </fielset>
-    </div>
   </body>
 </html>
